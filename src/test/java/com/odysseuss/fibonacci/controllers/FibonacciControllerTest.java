@@ -18,6 +18,21 @@ public class FibonacciControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
+    void fibonacci_baseCaseZero() {
+        assertThat(restTemplate.getForObject("/fibonacci/0/1/", String.class)).isEqualTo("[0]");
+    }
+
+    @Test
+    void fibonacci_baseCaseOne() {
+        assertThat(restTemplate.getForObject("/fibonacci/1/1/", String.class)).isEqualTo("[1]");
+    }
+
+    @Test
+    void fibonacci_firstSevenSequence() {
+        assertThat(restTemplate.getForObject("/fibonacci/0/7/", String.class)).isEqualTo("[0,1,1,2,3,5,8]");
+    }
+
+    @Test
     void testCase1() {
         assertThat(restTemplate.getForObject("/fibonacci/5/5/", String.class)).isEqualTo("[5,8,13,21,34]");
     }

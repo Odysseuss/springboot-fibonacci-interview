@@ -21,7 +21,13 @@ public class FibonacciController {
 
             started |= starting >= twoPrevious && starting <= onePrevious;
             if (started){
-                result[i] = onePrevious;
+
+                if (starting < 1) {
+                    result[i] = twoPrevious;
+                } else {
+                    result[i] = onePrevious;
+                }
+                
                 i++;
             }
 
