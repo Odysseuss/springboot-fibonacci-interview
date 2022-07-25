@@ -15,27 +15,22 @@ public class FibonacciController {
     public Iterable<Long> fibonacci(@PathVariable(name = "starting")int starting, @PathVariable(name = "numberOfFibonacci") int numberOfFibonacci) {
 
         long[] result = new long[numberOfFibonacci];
-        long onePrevious = 1;
-        long twoPrevious = 0;
+        long current = 1;
+        long previous = 0;
 
         boolean started = false;
         for (int i = 0; (i < numberOfFibonacci) ;) {
 
-            started |= starting >= twoPrevious && starting <= onePrevious;
+            started |= starting >= previous && starting <= current;
             if (started){
-
-                if (starting < 1) {
-                    result[i] = twoPrevious;
-                } else {
-                    result[i] = onePrevious;
-                }
                 
+                result[i] = (starting == 0) ? previous : current;
                 i++;
             }
 
-            long temp = onePrevious;
-            onePrevious += twoPrevious;
-            twoPrevious = temp;
+            long temp = current;
+            current += previous;
+            previous = temp;
         }
 
         return Arrays.stream(result).boxed().toList();
