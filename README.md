@@ -37,3 +37,19 @@ fib(4) = 3
 fib(5) = 5
 fib(6) = 8
 ```
+
+# The Solution
+
+For the solution, I wanted to stay away from using the naive recursive approach
+to the fibonacci calculation from CompSci 101. This is because that solution has
+a Time Complexity of O(2^n) and a Space Complexity of O(n)
+Obviously, this was paramont, in my view, to avoid.
+
+Instead, I took a dynamic programming approach which reduced the Time Complexity to 
+O(n), where `n = (starting + numberOfFibonacci)`, and the Space Complexity to O(1).
+
+As for the REST controller, I took the liberty of adding the number of digits
+to report from the Fibonacci sequence as a path variable. However, this was
+not required and perhaps could be viewed as a problem in an interview setting.
+I liked the ability to remove the magic number, 5, in this way and give a more robust
+interface.
